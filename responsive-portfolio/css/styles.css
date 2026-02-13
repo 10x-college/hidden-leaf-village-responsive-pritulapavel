@@ -1,0 +1,305 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+:root {
+    --primary-bg-color: #FF6B1A;
+    --primary-text-color: #000000;
+    --secondary-text-color: #666666;
+    --light-text-color: #ffffff;
+    --dark-bg: #1A1A1A;
+    --hero-background-color: #2A2A2A;
+    --content-background-color: #F5F5F5;
+    --card-background-color: #FFFFFF;
+    --card-border: 0.4rem solid #FF6B1A;
+    --card-border-radius: 1.2rem;
+    --card-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-wrapper .header,
+.main-wrapper .content,
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-wrapper .header {
+    flex-direction: column;
+    min-height: 13rem;
+    background-color: var(--primary-bg-color);
+    color: var(--light-text-color);
+}
+
+.header-wrapper .header .heading {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.header-wrapper .header h1 {
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+.header-wrapper .header h1 img {
+    width: 2.4rem;
+    height: 2rem;
+    margin-right: 1.2rem;
+}
+
+.header-wrapper .header h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.header-wrapper .header h2 img {
+    margin-left: -0.5rem;
+}
+
+.header-wrapper .navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--dark-bg);
+    position: relative;
+}
+
+.header-wrapper .navigation label {
+    display: flex;
+    align-items: center;
+    padding: 1.1rem 1.3rem;
+    width: 10.3rem;
+    background-color: var(--primary-bg-color);
+    border: none;
+    border-radius: 0.8rem;
+    color: var(--light-text-color);
+    gap: 0.5rem;
+    font-size: 1.9rem;
+    font-weight: 500;
+    margin: 1.2rem;
+    position: relative;
+}
+
+.header-wrapper .navigation label span {
+    display: block;
+    width: 1.7rem;
+    height: 0.2rem;
+    background-color: var(--light-text-color);
+    position: relative;
+}
+
+.header-wrapper .navigation label span::before,
+.header-wrapper .navigation label span::after {
+    content: "";
+    height: 0.2rem;
+    width: 1.7rem;
+    background-color: var(--light-text-color);
+    display: block;
+    position: absolute;
+}
+
+.header-wrapper .navigation label span::before { top: -0.7rem; }
+.header-wrapper .navigation label span::after { top: 0.7rem; }
+
+.header-wrapper .navigation a {
+    color: var(--light-text-color);
+    font-size: 1.7rem;
+}
+
+.header-wrapper .navigation nav,
+.header-wrapper .navigation input,
+.header-wrapper .navigation ul {
+    display: none;
+}
+
+.header-wrapper .navigation ul {
+    gap: 4.8rem;
+    list-style: none;
+}
+
+.header-wrapper .navigation input:checked ~ label span { height: 0; }
+.header-wrapper .navigation input:checked ~ label span::before,
+.header-wrapper .navigation input:checked ~ label span::after {
+    transform: rotate(45deg);
+    top: 0.05rem;
+    width: 1.9rem;
+}
+.header-wrapper .navigation input:checked ~ label span::after {
+    transform: rotate(-45deg);
+}
+.header-wrapper .navigation input:checked ~ nav {
+    display: flex;
+    flex-direction: column;
+}
+.header-wrapper .navigation input:checked ~ nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    gap: 3rem;
+    padding-bottom: 2rem;
+    width: 100%;
+    background: var(--dark-bg);
+    z-index: 2;
+    box-shadow: 0px 1.3rem 1rem -1rem rgba(0,0,0,0.7);
+    list-style: none;
+}
+.header-wrapper .navigation input:checked ~ nav ul a {
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    transition: background 0.3s linear;
+}
+.header-wrapper .navigation input:checked ~ nav ul a:hover {
+    background-color: var(--primary-bg-color);
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    background-color: var(--content-background-color);
+    min-height: 100vh;
+}
+
+.main-wrapper .hero-wrapper {
+    background-color: var(--hero-background-color);
+}
+
+.main-wrapper .hero-wrapper .hero {
+    display: grid;
+    place-content: center;
+    gap: 1.5rem;
+    min-height: 37.7rem;
+    text-align: center;
+    line-height: 1.5;
+    position: relative;
+    color: var(--light-text-color);
+}
+
+.main-wrapper .hero-wrapper .hero .hero-icon {
+    width: clamp(15.1rem, 47vw, 30.2rem);
+    height: clamp(12.9rem, 40vw, 25.3rem);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+    background: url('../assets/images/logo-big.png') center/cover no-repeat;
+}
+
+.main-wrapper .hero-wrapper .hero h2 {
+    font-size: clamp(2.4rem, 3vw, 4rem);
+    z-index: 1;
+}
+.main-wrapper .hero-wrapper .hero h3 {
+    font-size: clamp(1.6rem, 3vw, 1.8rem);
+    z-index: 1;
+}
+
+.main-wrapper .content {
+    flex-direction: column;
+    padding-bottom: 2.4rem;
+}
+.main-wrapper .content .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 32.4rem));
+    gap: 3rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 120rem;
+}
+.main-wrapper .content .card {
+    min-height: 20rem;
+    border-top: var(--card-border);
+    border-radius: var(--card-border-radius);
+    background-color: var(--card-background-color);
+    box-shadow: var(--card-box-shadow);
+    transition: box-shadow 0.2s linear;
+}
+.main-wrapper .content .card:hover {
+    box-shadow: 0px 12px 16px 8px #ddd;
+    cursor: pointer;
+}
+.main-wrapper .card .card-body {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2.6rem 2.4rem;
+}
+.main-wrapper .card .card-body img { width: 2.4rem; height: 2.4rem; }
+.main-wrapper .card .title { display: flex; gap: 0.8rem; }
+.main-wrapper .card .title span { font-size: 2.4rem; font-weight: bold; }
+.main-wrapper .card .description { font-size: 1.6rem; color: var(--secondary-text-color); }
+
+footer {
+    height: 9rem;
+    background-color: var(--dark-bg);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer p {
+    color: var(--light-text-color);
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    position: relative;
+}
+footer p::before {
+    content: " · Copyright :) By Pavle Pritula ·";
+    position: absolute;
+    left: 50%;
+    top: 2rem;
+    transform: translateX(-50%) translateY(10px);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    color: #7df9ff;
+    font-size: 0.8rem;
+    letter-spacing: 0.2rem;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+footer:hover p::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+@media (min-width: 768px) {
+    .header-wrapper .navigation {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        min-height: 7rem;
+    }
+    .header-wrapper .navigation label { display: none; }
+    .header-wrapper .navigation nav { display: flex; }
+    .header-wrapper .navigation nav ul {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        gap: 4.8rem;
+        background: none;
+        padding: 0;
+        list-style: none;
+    }
+    .header-wrapper .navigation nav ul a { text-decoration: none; padding: 1rem; border-radius: 0.8rem; }
+    .header-wrapper .navigation nav ul a:hover { background-color: var(--primary-bg-color); }
+    .main-wrapper .hero-wrapper .hero .hero-icon {
+        background: url('../assets/images/logo-big-2.png') center/cover no-repeat;
+    }
+}
